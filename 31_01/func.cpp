@@ -5,6 +5,7 @@ int input_age();
 std::string check_age(const int &age);
 void print_mess(const std::string &mess);
 
+// чтение одного числа из консоли
 int input_age() {
     int age;
 
@@ -13,6 +14,8 @@ int input_age() {
     return age;
 }
 
+// проверка числа из аргумента
+// возвращение строки в зависимости от результата
 std::string check_age(const int &age) {
     std::string mess = "";
     if (age > 20) {
@@ -25,6 +28,7 @@ std::string check_age(const int &age) {
     return mess;
 }
 
+// вывод сообщение из аргумента в консоль
 void print_mess(const std::string &mess) {
     std::cout << mess << "\n";
 }
