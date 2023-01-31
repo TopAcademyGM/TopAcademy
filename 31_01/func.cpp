@@ -5,8 +5,7 @@ int input_age();
 std::string check_age(const int &age);
 void print_mess(const std::string &mess);
 
-int input_age()
-{
+int input_age() {
     int age;
 
     std::cout << "Hello! Input your age: ";
@@ -14,8 +13,7 @@ int input_age()
     return age;
 }
 
-std::string check_age(const int &age)
-{
+std::string check_age(const int &age) {
     std::string mess = "";
     if (age > 20) {
         mess = "Too old!";
@@ -27,19 +25,14 @@ std::string check_age(const int &age)
     return mess;
 }
 
-void print_mess(const std::string &mess)
-{
+void print_mess(const std::string &mess) {
     std::cout << mess << "\n";
 }
 
-int main()
-{
+int main() {
     int age = input_age();
     std::string mess = check_age(age);
     print_mess(mess);
 
-    char sign;
-    std::cin >> sign; // = '+'
-    std::cout << sign << "\n";
     return 0;
 }
