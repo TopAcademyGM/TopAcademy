@@ -9,9 +9,9 @@ int main() {
     std::cin >> ch;
 
     result = n;
-    while (ch > 1) {
+    // возведение в степень n^ch
+    for (int i = 1; i != ch; i = i+1) {
         result = result * n;
-        ch = ch - 1;
     }
 
     std::cout << "n^ch = " << result << "\n";
