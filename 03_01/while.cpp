@@ -1,15 +1,19 @@
 #include <iostream>
 
 int main() {
-    // int n = 10;
-    // while (n > 0) {
-    //     std::cout << n << "\n";
-    //     n = n - 1;
-    // }
+    int n, ch, result;
 
-    for (int n = 5; n > 0; n = n - 1){
-        std::cout << n << "\n";
+    std::cout << "Input n = ";
+    std::cin >> n;
+    std::cout << "Input ch = ";
+    std::cin >> ch;
+
+    result = n;
+    while (ch > 1) {
+        result = result * n;
+        ch = ch - 1;
     }
 
+    std::cout << "n^ch = " << result << "\n";
     return 0;
 }
