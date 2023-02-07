@@ -1,5 +1,12 @@
 #include <iostream>
 
+void print_array(int *arr, int size) {
+    for (int i = 0; i < size; i++) {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << '\n';
+}
+
 int main() {
     const int capasity = 100;
     int arr[capasity];
@@ -16,11 +23,9 @@ int main() {
     for (int i = 0; i < size; i++) {
         std::cin >> arr[i];
     }
+    
+    print_array(arr, size);
 
-    for (int i = 0; i < size; i++) {
-        std::cout << arr[i] << " ";
-    }
-    std::cout << '\n';
     int tmp;
 
     std::cout << "Add size = ";
@@ -30,20 +35,14 @@ int main() {
         return 1;
     }
     std::cout << "\n";
-    
-    {
+
         int buf = size;
         size = tmp + size;
         for (int i = buf; i < size; i++) {
             std::cin >> arr[i];
         }
-    }
     
-    for (int i = 0; i < size; i++) {
-        std::cout << arr[i] << " ";
-    }
-    std::cout << '\n';
+    print_array(arr, size);
     
-    std::cout << '\n';
     return 0;
 }
