@@ -4,7 +4,8 @@ void full_rand(int *arr, int size) {
     srand(time(NULL));
 
     for (int i = 0; i < size; ++i) {
-        arr[i] = rand() % 100 + 1; // 1 - 100
+        //arr[i] = rand() % 100 + 1; // 1 ... 100
+        arr[i] = rand() % 100 - 50; // -50 ... 49
     }
 }
 
@@ -57,6 +58,13 @@ int main() {
     int max_line = 0, min_line = 0;
     int sum = 0, sum_line = 0; 
     int min_y = 0, max_y = 0; 
+    int index_y = -1;
+    int index_x = -1;
+    int find_val;
+
+    std::cout << "Input find value: ";
+    std::cin >> find_val;
+
     
     for (int i = 0; i < y; ++i) {
         sum_line = 0;
@@ -67,6 +75,11 @@ int main() {
             if (min > matrix[i][j]) {
                 min = matrix[i][j];
             }
+            
+            if (matrix[i][j] == find_val) {
+                index_y = i;
+                index_x = j;
+        }
             sum_line = sum_line + matrix[i][j];
         }
 
@@ -87,9 +100,12 @@ int main() {
     std::cout << "Max line = " << max_y + 1 << "\n";
     std::cout << "Avg = " << sum / (x * y) << "\n";
 
-
-
-    
+    if (index_y < 0) {
+        std::cout << "Value: " << find_val << " not found!\n";
+    } else {
+        std::cout << "Value " << find_val << " - x: " 
+        << index_x + 1 << " y: " << index_y + 1 <<"\n";
+    }
 
     return 0;
 }
