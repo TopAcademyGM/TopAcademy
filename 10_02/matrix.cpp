@@ -15,10 +15,21 @@ void print_arr(int *arr, int size) {
     std::cout << "\n";
 }
 
+void print_arr(int **arr, const int y, const int x) {
+    for (int i = 0; i < y; ++i) {
+
+        for (int j = 0; j < x; ++j) {
+            std::cout << arr[i][j] << "\t";
+        }
+        std::cout << "\n";
+
+    }
+}
+
 int main() {
     srand(time(NULL));
-    // const int capasity = 3;
-    // int arr[capasity];
+    const int capasity = 3;
+    int arr[capasity];
     // full_rand(arr, capasity);
     // print_arr(arr, capasity);
 
@@ -42,7 +53,43 @@ int main() {
     std::cout << "\n";
 
 
+    int max = matrix[0][0], min = matrix[0][0];
+    int max_line = 0, min_line = 0;
+    int sum = 0, sum_line = 0; 
+    int min_y = 0, max_y = 0; 
+    
+    for (int i = 0; i < y; ++i) {
+        sum_line = 0;
+        for (int j = 0; j < x; ++j) {
+            if (max < matrix[i][j]) {
+                max = matrix[i][j];
+            }
+            if (min > matrix[i][j]) {
+                min = matrix[i][j];
+            }
+            sum_line = sum_line + matrix[i][j];
+        }
 
+        sum += sum_line;
+        if (max_line < (sum_line / x) || max_line == 0) {
+            max_line = sum_line / x;
+            max_y = i;
+        }
+        if (min_line > (sum_line / x) || min_line == 0) {
+            min_line = sum_line / x;
+            min_y = i;
+        }
+    }
+
+    std::cout << "Min = " << min << "\n";
+    std::cout << "Min line = " << min_y + 1 << "\n";
+    std::cout << "Max = " << max << "\n";
+    std::cout << "Max line = " << max_y + 1 << "\n";
+    std::cout << "Avg = " << sum / (x * y) << "\n";
+
+
+
+    
 
     return 0;
 }
