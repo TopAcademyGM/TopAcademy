@@ -26,16 +26,13 @@ int main() {
     int *arr = new int[size];
 
     full_rand_arr(arr, size);
-    
     // find_min_max(arr, size); // Поиск макимума/минимума
     // find_more_n(arr, size, n); // Вывести кол-во эл больше чем n
-    // del_elem(arr, size, index); // Удаление элемента по индексу
-    // add_elem(arr, size, index, val); // Добавление элемента по индексу
-    // add_arr_in_end(arr1, size1, arr2, size2);
+    // del_elem(&arr, size, index); // Удаление элемента по индексу
+    // add_elem(&arr, size, index, val); // Добавление элемента по индексу
+    // add_arr_in_end(&arr1, size1, arr2, size2);
     // arr1 = 1,2,3,4 size1 = 5  arr2 = -4,-3,-2,-1 size2 = 5
     // arr1 = 1,2,3,4,-4,-3,-2,-1 size1=size1+size2=10
-
-
 
     delete [] arr;
 }
