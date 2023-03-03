@@ -30,7 +30,8 @@ int main() {
     // find_more_n(arr, size, n); // Вывести кол-во эл больше чем n
     // del_elem(&arr, size, index); // Удаление элемента по индексу
     // add_elem(&arr, size, index, val); // Добавление элемента по индексу
-    int arr2[5] = {5,4,3,2,1};
+    int arr2[5];
+    full_rand_arr(arr2, 5);
     int size2 = 5;
     // add_arr_in_end(&arr, size, arr2, size2); // Добавление элементов массива arr2
     // в конец массива arr
