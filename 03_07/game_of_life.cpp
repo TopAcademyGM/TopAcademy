@@ -96,6 +96,7 @@ int main() {
         next_generation(matrix);
         // std::cin >> next;
         sleep(1);
+        // usleep(5555);
         system("clear");
     }
 }
