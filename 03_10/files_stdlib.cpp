@@ -50,12 +50,11 @@ int main(int argc, char const *argv[])
 
         // my_file = fopen("test.txt", "r");
         my_file = fopen(file_name, "r");
-        if (my_file != NULL)
-        {
+        if (my_file != NULL) {
             repit_n_lines(my_file);
+            fclose(my_file);
         }
-        else
-        {
+        else {
             std::cout << "File error!\n";
         }
     }
