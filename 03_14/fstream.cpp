@@ -17,6 +17,15 @@ void std_input_file(std::ifstream &fin) {
               << fin.bad() << "\n";
 }
 
+void copy_stream_to_stream(std::istream &in, std::ostream &out) {
+    std::string temp;
+
+    while (in.good()) {
+        std::getline(in, temp);
+        out << temp << "\n";
+    }
+}
+
 void copy_file_to_file(const std::string &file_name_in,
                         const std::string &file_name_out) {
     // i - input (чтение)
@@ -48,18 +57,19 @@ void print_all_file(const std::string &file_name) {
     // f - file
     // stream - поток
     // char temp;
-    std::string temp;
+    // std::string temp;
     std::ifstream file_in;
     file_in.open(file_name);
 
     // std::getline()
 
-    while (file_in.good()) {
-        // std::cin >> temp;
-        // file_in >> temp;
-        std::getline(file_in, temp);
-        std::cout << temp << "\n";
-    }
+    // while (file_in.good()) {
+    //     // std::cin >> temp;
+    //     // file_in >> temp;
+    //     std::getline(file_in, temp);
+    //     std::cout << temp << "\n";
+    // }
+    copy_stream_to_stream(file_in, std::cout);
     file_in.close();
 }
 
