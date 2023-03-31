@@ -10,6 +10,7 @@ int main(int argc, char const *argv[])
     a = Rect(5,5);
     cout << "A:\t" << a << "\n";
     cout << "A + B:\t" << a + b << "\n";
+    cout << "A - B:\t" << a + b << "\n";
     if (a >= b) {
         std::cout << "A >= B";
     }
