@@ -32,6 +32,15 @@ class Array {
         }
     }
 
+    // Перегрузка квадратных скобок ( [] )
+    T &operator[](int index) {
+        if (index < 0 || index >= this->size) {
+            std::cout << "index out range\n";
+            return this->arr[0];
+        }
+        return this->arr[index];
+    }
+
     void print_arr() {
         for (int i = 0; i < size; ++i) {
             std::cout << this->arr[i] << " ";
@@ -62,9 +71,22 @@ int main() {
     my_arr.print_arr();
     my_carr.print_arr();
     my_farr.print_arr();
+    std::cout << "\n\n" << my_arr[2] << "\n";
+    int n;
+    std::cin >> n;
+    my_arr[n] = 5;
+    my_arr.print_arr();
     // print_arr(i_arr, 4);
     // print_arr(c_mass, 4);
     // print_arr(f_mass, 4);
+    
+
+    // TESTS [1, 2, 3, 4]
+    my_arr.erase(3); // [1, 2, 3]
+    my_arr.print_arr();
+    my_arr.insert(3, 7); // [1, 2, 3, 7]
+    my_arr.insert(0, 13); // [13, 1, 2, 3, 7]
+    my_arr.sort(); // [1, 2, 3, 7, 13]
 
     return 0;
 }
