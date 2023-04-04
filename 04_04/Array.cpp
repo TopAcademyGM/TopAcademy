@@ -13,7 +13,7 @@ class Array {
     // Конструктор с аргументом размерности
     Array(int size) : size(size) {
         std::cout << "Hi!!!\n";
-        this->arr = new T[size];
+        this->arr = new T[size + 10];
     }
     // Конструктор с аргументами источника массива и размерности
     Array(T* copy, int size) : Array(size) {
@@ -25,7 +25,7 @@ class Array {
     Array(std::istream &in) {
         in >> size;
         std::cout << size << "\n";
-        this->arr = new T[size];
+        this->arr = new T[size + 10];
 
         for (int i = 0; i < size; ++i) {
             in >> this->arr[i];
@@ -46,6 +46,21 @@ class Array {
             std::cout << this->arr[i] << " ";
         }    
         std::cout << "\n";
+    }
+
+    void erase(int index) {
+        for (int i = index; i <= this->size; ++i) {
+            this->arr[i] = this->arr[i+1];
+        }
+        this->size--;
+    }
+
+    void insert(int index, T val) {
+        for (int i = this->size; i > index; --i) {
+            this->arr[i] = this->arr[i-1];
+        }
+        this->arr[index] = val;
+        this->size++;
     }
 };
 
@@ -85,8 +100,10 @@ int main() {
     my_arr.erase(3); // [1, 2, 3]
     my_arr.print_arr();
     my_arr.insert(3, 7); // [1, 2, 3, 7]
+    my_arr.print_arr();
     my_arr.insert(0, 13); // [13, 1, 2, 3, 7]
-    my_arr.sort(); // [1, 2, 3, 7, 13]
+    my_arr.print_arr();
+    // my_arr.sort(); // [1, 2, 3, 7, 13]
 
     return 0;
 }
