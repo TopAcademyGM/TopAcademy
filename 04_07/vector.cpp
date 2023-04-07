@@ -39,6 +39,37 @@ class Array {
         }
     }
 
+    void erase(int n) {
+        for (int i = n; i < this->size - 1; ++i) {
+            this->arr[i] = this->arr[i+1];
+        }
+        this->size -= 1;
+    }
+
+
+    void recap(int new_cap) {
+        T* buf = new T[new_cap];
+
+        for (int i = 0; i < new_cap && i < this->size; i++) {
+            buf[i] = this->arr[i];
+        }
+        this->cap = new_cap;
+        T* tmp = this->arr;
+        this->arr = buf;
+        delete [] tmp;
+    }
+
+    void insert(int n, T val) {
+        if (this->size + 1 >= this->cap) {
+            recap((this->cap + 1) * 2)
+        }
+        for (int i = size; i != n; --i) {
+            this->arr[i] = this->arr[i-1];
+        }
+        this->size += 1;
+        arr[n] = val;
+    }
+
     iterator begin() {
         return iterator(this->arr);
     } 
