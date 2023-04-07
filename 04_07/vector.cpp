@@ -28,7 +28,7 @@ class Array {
     }
     // [1,2,3,4,5]
     Array(std::initializer_list<T> list) : cap(list.size()), size(list.size()) {
-        this->arr = new T[this-cap];
+        this->arr = new T[this->cap];
         int j = 0;
         for (typename std::initializer_list<T>::iterator i = list.begin();
             i != list.end(); ++i) {
@@ -58,7 +58,7 @@ void print_conteiner(cont arr) {
 }
 
 int main() {
-    Array<int> test_arr(3,6);
+    Array<int> test_arr({3,2,1,5,6});
     test_arr.print();
     return 0;
 }
