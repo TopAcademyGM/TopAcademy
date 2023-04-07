@@ -11,6 +11,8 @@ class Array {
     int size;
 
  public:
+    typedef T value_type;
+    class iterator;
     Array() {}
     Array(int n, T val) : cap(n), size(n) {
         arr = new T[this->cap];
@@ -23,7 +25,7 @@ class Array {
         arr = new T[this->cap];
 
         for (int i = 0; i < other.size; ++i) {
-            arr[i] = other->arr[i];
+            arr[i] = other.arr[i];
         }
     }
     // [1,2,3,4,5]
@@ -37,6 +39,13 @@ class Array {
         }
     }
 
+    iterator begin() {
+        return iterator(this->arr);
+    } 
+    iterator end() {
+        return iterator(this->arr + this->size);
+    } 
+
     void print() {
         for (int i = 0; i < this->size; ++i) {
             std::cout << this->arr[i] << " "; 
@@ -44,12 +53,70 @@ class Array {
         std::cout << "\n"; 
     }
 
+
     ~Array() {
         delete [] this->arr;
     }
 
+    class iterator{
+     private:
+        T* data;
+     public:
+        iterator(T* data) : data(data) {}
+        T &operator*() {
+            return *data;
+        }
+        iterator &operator++() {
+            this->data++;
+            return *this;
+        }
+        iterator operator++(int) {
+            iterator tmp {this->data};
+            this->data++;
+            return tmp;
+        }
+        iterator &operator--() {
+            this->data--;
+            return *this;
+        }
+        iterator operator--(int) {
+            iterator tmp {this->data};
+            this->data--;
+            return tmp;
+        }
+        bool operator!=(const iterator &other) {
+            return this->data != other.data;
+        }
+        iterator operator+(int n) {
+            return iterator(this->data + n);
+        }
+        iterator operator-(int n) {
+            return iterator(this->data - n);
+        }
+    };
 };
 
+template <typename cont>
+void my_sort(cont &arr) {
+    for (typename cont::iterator i = arr.begin();
+        i != arr.end() - 1;
+        i++) {
+        for (typename cont::iterator j = i + 1;
+            j != arr.end();
+            j++) {
+            if (*i > *j) {
+                // std::cout << *i << " " << *j << "\n";
+                typename cont::value_type tmp = *i;
+                *i = *j;
+                *j = tmp;
+                // std::cout << *i << " " << *j << "\n";
+                // print_conteiner(arr);
+            }
+        }
+        
+    }
+
+}
 
 template <typename cont>
 void print_conteiner(cont arr) {
@@ -64,6 +131,8 @@ void print_conteiner(cont arr) {
 int main() {
     Array<int> test_arr({3,2,1,5,6});
     test_arr.print();
+    my_sort(test_arr);
+    print_conteiner(test_arr);
     return 0;
 }
 
