@@ -44,6 +44,10 @@ class Array {
         std::cout << "\n"; 
     }
 
+    ~Array() {
+        delete [] this->arr;
+    }
+
 };
 
 
