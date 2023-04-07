@@ -1,6 +1,7 @@
 #include <vector>
 #include <list>
 #include <iostream>
+#include <algorithm>
 
 template <typename cont>
 void print_conteiner(cont arr) {
@@ -22,5 +23,7 @@ int main() {
 
     print_conteiner(vec);
     print_conteiner(my_list);
+    std::sort(vec.begin(), vec.end());
+    print_conteiner(vec);
     return 0;
 }
