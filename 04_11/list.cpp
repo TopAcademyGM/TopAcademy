@@ -17,7 +17,7 @@ class my_list {
 
     node *head; // голова (первый элемент)
     node *tail; // хвост  (последний элемент)
-    int size();
+    int size;
     
 };
 
